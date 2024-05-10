@@ -3,22 +3,27 @@
 ## General
 
 - Use tabs.
-- Use interfaces over types.
-- Embrace simple for loops.
-- Use `Uint8Array` over number arrays for representing bytes.
+- Use interfaces instead of types.
+- Use `"` instead of `'`.
+- Use `let` and `const` instead of `var`.
 - Use classes when applicable.
-- Avoid method chaining, abstract classes, and protected methods.
-- Avoid complex type puzzles.
-- Named functions over arrow functions.
+- `await` instead of `.then`.
+- Separate type and regular imports.
+
   ```ts
   // bad
-  const foo = () => {}
+  import { someFunction, SomeType } from "foo";
+  import { someFunction, type SomeType } from "foo";
 
   // good
-  function foo() {}
+  import { someFunction } from "foo";
+  import type { SomeType } from "foo";
   ```
 
-## Variable names
+- Mutability is fine.
+- Use `Uint8Array` instead of number arrays for representing bytes.
+
+## Naming convention
 
 - Use camelCase for variables and functions, and SCREAMING_SNAKE_CASE for constants.
   ```ts
@@ -47,6 +52,16 @@
   ```
 
 ## Functions
+
+- Use named functions instead of arrow functions for top-level function.
+
+  ```ts
+  // bad
+  const foo = () => {};
+
+  // good
+  function foo() {}
+  ```
 
 - Explicit return types, even for functions that don't return values.
 
@@ -132,3 +147,54 @@
     // ...
   }
   ```
+
+- Throw errors. Don't return them.
+- Avoid complex type puzzles.
+
+## Control flow
+
+### If statements
+
+- Use `{}`.
+
+  ```ts
+  // bad
+  if (condition) stuff;
+
+  // good
+  if (condition) {
+    stuff;
+  }
+  ```
+
+- Use shortcuts only for booleans.
+
+  ```ts
+  let foo: string;
+
+  // bad
+  if (!foo) {
+    // ...
+  }
+
+  // good
+  if (foo !== "") {
+    // ...
+  }
+  ```
+
+- Never use `==` or `!=`.
+
+### Other
+
+- Embrace simple `for` loops. Don't try to force `.map()` and don't use `.forEach()`.
+- Avoid switch statements.
+- Avoid `finally`.
+
+## Classes
+
+- Avoid method chaining, abstract classes, and protected methods.
+- No getters and setters.
+- No static methods and properties.
+- Properties, constructor, methods - in that order.
+- Inheritance is ok but avoid overriding methods and properties.

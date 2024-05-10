@@ -9,6 +9,14 @@
 - Use classes when applicable.
 - Avoid method chaining, abstract classes, and protected methods.
 - Avoid complex type puzzles.
+- Names functions over arrow functions.
+  ```ts
+  // bad
+  const foo = () => {}
+
+  // good
+  function foo() {}
+  ```
 
 ## Variable names
 

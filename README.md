@@ -22,6 +22,7 @@
 
 - Mutability is fine.
 - Use `Uint8Array` instead of number arrays for representing bytes.
+- Comments should be properly capitalized.
 
 ## Naming convention
 
@@ -170,15 +171,19 @@
 - Use shortcuts only for booleans.
 
   ```ts
-  let foo: string;
-
   // bad
-  if (!foo) {
+  if (thisIsABoolean === true) {
+    // ...
+  }
+  if (thisIsAString) {
     // ...
   }
 
   // good
-  if (foo !== "") {
+  if (thisIsABoolean) {
+    // ...
+  }
+  if (thisIsAString !== "") {
     // ...
   }
   ```
